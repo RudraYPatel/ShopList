@@ -32,23 +32,28 @@ export default function NewItem() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
+                        className="m-5 border-4 border-cyan-400"
                         type="text" 
                         id="name" 
                         value={name} 
                         placeholder="Item Name"
-                        onChange={(e) => setName(e.target.value)} 
+                        onChange={(e) => setName(e.target.value)}
+                        required 
                     />
                 </div>
                 <div>
-                    <input 
+                    <input
+                        className="m-5 border-4 border-cyan-400" 
                         type="number" 
-                        id="quantity" 
+                        id="quantity"
+                        min="0" 
                         value={quantity} 
                         onChange={(e) => setQuantity(e.target.value)} 
                     />
                 </div>
                 <div>
                     <select 
+                        className="m-5 border-4 border-cyan-400"
                         id="category" 
                         value={category} 
                         onChange={(e) => setCategory(e.target.value)}
@@ -62,7 +67,7 @@ export default function NewItem() {
                         <option value="snacks">Snacks</option>
                     </select>
                 </div>
-                <button type="submit">Add Item</button>
+                <button className="p-4 bg-white rounded-[10px] mt-5" type="submit">Add Item</button>
             </form>
         </main>
     );
