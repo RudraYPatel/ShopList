@@ -18,7 +18,7 @@ const items = [
 
 export default function ItemList() {
   return (
-    <div className="max-w-md">
+    <div className="max-w-md justify-items-center">
       <ul className="grid md-3 gap-5">
         <Item name={items[0].name} quantity={items[0].quantity} category={items[0].category} />
         <Item name={items[1].name} quantity={items[1].quantity} category={items[1].category} />
