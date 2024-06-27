@@ -47,7 +47,7 @@ export default function NewItem({onAddItem, closeFormFunc}) {
                         className="m-5 border-2 rounded-md border-black" 
                         type="number" 
                         id="quantity"
-                        min="0" 
+                        min="1" 
                         value={quantity} 
                         onChange={(e) => setQuantity(e.target.value)}
                         required 
