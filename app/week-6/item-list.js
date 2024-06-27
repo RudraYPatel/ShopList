@@ -11,7 +11,6 @@ const ItemList = ({items}) => {
     } else if (sort === 'category') {
       return (x.category || "").localeCompare(y.category || "");
     }
-    return 0; // Add default return to avoid issues
   });
 
   return (

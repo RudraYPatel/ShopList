@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
 
 
 export default function NewItem({onAddItem, closeFormFunc}) {
@@ -15,7 +14,6 @@ export default function NewItem({onAddItem, closeFormFunc}) {
         event.preventDefault();
         
         let item = {
-            id: uuidv4(),
             name: name,
             quantity: parseInt(quantity),
             category: category,
@@ -31,7 +29,7 @@ export default function NewItem({onAddItem, closeFormFunc}) {
     }
 
     return(
-        <main className="">
+        <main className="flex flex-col border-2 border-black w-80 ml-12 rounded-2xl">
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
