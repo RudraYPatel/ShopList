@@ -1,24 +1,24 @@
 "use client"
 import React, { useState } from 'react';
 import Item from './item'; 
-import items from './items.json'; 
 
-const ItemList = () => {
-  const [sort, setSort] = useState('name');
+const ItemList = ({items}) => {
+  const [sort, setSort] = useState('name'); 
 
   const sortedItems = [...items].sort((x, y) => {
     if (sort === 'name') {
-      return x.name.localeCompare(y.name);
+      return (x.name || "").localeCompare(y.name || "");
     } else if (sort === 'category') {
-      return x.category.localeCompare(y.category);
-    };
+      return (x.category || "").localeCompare(y.category || "");
+    }
+    return 0; // Add default return to avoid issues
   });
 
   return (
     <div>
       <div className='m-5'>
         <button
-        className='ml-5 rounded-md h-10 w-40 background-indigo'
+        className='ml-5 rounded-md h-10 w-40'
           onClick={() => setSort('name')}
           style={{ backgroundColor: sort === 'name' ? 'purple' : 'white' }}
         >
