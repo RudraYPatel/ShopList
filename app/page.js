@@ -30,6 +30,9 @@ export default function Home() {
       <div  className="mb-4">
       <Link className={linkStyles} href="./week-7">Week 7 Assignment</Link>
       </div>
+      <div  className="mb-4">
+      <Link className={linkStyles} href="./week-8">Week 8 Assignment</Link>
+      </div>
       </div>
     </main>
   );
