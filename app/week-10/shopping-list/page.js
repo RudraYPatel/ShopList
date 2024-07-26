@@ -6,25 +6,39 @@ import { useUserAuth } from "../_utils/auth-context";
 import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
 import ItemList from '@/app/week-7/item-list';
+import { getItems, addItem } from '../_services/shopping-list-service';
 
 export default function Page() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
   const router = useRouter();
   const [selectedItemName, setSelectedItemName] = useState(null);
   const [isNewItemFormOpen, setNewItemFormOpen] = useState(false);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     if (!user) {
       router.push("/");
+    } else {
+      loadItems();
     }
   }, [user, router]);
 
-  if (!user) {
-    return null;
-  }
+  const loadItems = async () => {
+    try {
+      const items = await getItems(user.uid);
+      setItems(items);
+    } catch (error) {
+      console.error("Error loading items:", error);
+    }
+  };
 
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
+  const handleAddItem = async (newItem) => {
+    try {
+      const itemId = await addItem(user.uid, newItem);
+      setItems([...items, { id: itemId, ...newItem }]);
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
   };
 
   const openNewItemForm = () => setNewItemFormOpen(true);
@@ -48,7 +62,7 @@ export default function Page() {
   };
 
   return (
-    <main className="h-screen-300vh bg-lightgray">
+    <main className="min-h-screen bg-lightgray">
       <h1 className="text-4xl font-bold ml-20 text-emerald-800">SHOPPING LIST</h1>
       <div>
         <button
