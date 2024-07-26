@@ -24,7 +24,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg- text-center bg-emerald-500">
-        
+        <h1 className="font-bold text-3xl mb-12">Shopping List Application</h1>
       {user ? (
         <>
           <p className="text-lg mb-6">
@@ -37,7 +37,7 @@ const Page = () => {
             Sign Out
           </button>
           <Link
-            href="/week-8/shopping-list"
+            href="/week-10/shopping-list"
             className="text-lg text-black hover:underline ml-4"
           >
             Continue to your Shopping List
